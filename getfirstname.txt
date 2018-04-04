@@ -1,0 +1,9 @@
+CREATE OR REPLACE FUNCTION get_actor_name(name text)
+RETURNS table (first_name text,last_name text) AS $$
+seLECT first_name,last_name from actor where first_name like $1
+$$ LANGUAGE 'sql';
+
+--Calling the function
+
+select * from get_actor_name('John%')
+
